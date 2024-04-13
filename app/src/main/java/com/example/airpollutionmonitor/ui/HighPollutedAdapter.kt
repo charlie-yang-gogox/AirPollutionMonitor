@@ -15,8 +15,8 @@ import com.example.airpollutionmonitor.utils.GlideUtils
 private const val TAG = "HighPollutedAdapter"
 
 class HighPollutedAdapter : RecyclerView.Adapter<HighPollutedAdapter.ViewHolder>(), Filterable {
-    var fullData = mutableListOf<Record>()
-    var filterData = mutableListOf<Record>()
+    var fullData = listOf<Record>()
+    var filterData = listOf<Record>()
 
     class ViewHolder(private val binding: HighPollutionListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -80,8 +80,7 @@ class HighPollutedAdapter : RecyclerView.Adapter<HighPollutedAdapter.ViewHolder>
         }
 
         override fun publishResults(constraint: CharSequence, results: FilterResults) {
-            filterData.clear()
-            filterData.addAll(results.values as ArrayList<Record>)
+            filterData = results.values as ArrayList<Record>
             notifyDataSetChanged()
         }
     }
